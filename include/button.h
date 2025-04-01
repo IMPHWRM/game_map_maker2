@@ -3,6 +3,6 @@
 
 #include <SDL2/SDL.h>
 
-int button_render(SDL_Renderer* renderer,char* button_name,SDL_Rect dst);
+int button_render(SDL_Renderer* renderer,char* button_name,SDL_Texture* font_texture,SDL_Rect dst);
 
 #endif
