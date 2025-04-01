@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "main.h"
 #include "button.h"
@@ -10,6 +12,10 @@ prog_state editor_loop(void)
 	SDL_Window* window=SDL_CreateWindow("editor",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,600,SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	SDL_Renderer* renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(renderer,50,50,50,255);
+
+	SDL_Surface* image=IMG_Load("font.png");
+	SDL_Texture* font_texture=SDL_CreateTextureFromSurface(renderer, image);
+	SDL_FreeSurface(image);
 
 	SDL_Event event;
 
@@ -28,7 +34,7 @@ prog_state editor_loop(void)
 		SDL_SetRenderDrawColor(renderer,50,50,50,255);
 		SDL_RenderClear(renderer);
 		SDL_Rect dst={0,0,100,100};
-		button_render(renderer,NULL,dst);
+		button_render(renderer,"salut mon gas",font_texture,dst);
 		SDL_RenderPresent(renderer);
 	}
 	SDL_DestroyRenderer(renderer);
