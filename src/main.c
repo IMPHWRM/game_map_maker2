@@ -29,7 +29,7 @@ int main(int argc,char* argv[])
 				break;
 			case editor:
 				printf("Lauching enditor...\n");
-				state=editor_loop();
+				state=editor_loop(NULL);
 				printf("Quit editor.\n");
 				break;
 			case end:
